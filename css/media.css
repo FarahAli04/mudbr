@@ -1,0 +1,449 @@
+/* ============================================================
+   media.css — Mudabbir Responsive Styles
+   Breakpoints:
+     Large tablet  → max-width: 1200px  (icon-only sidebar)
+     Tablet        → max-width: 900px   (icon-only sidebar + 1-col content)
+     Mobile        → max-width: 600px
+   ============================================================ */
+
+
+/* ============================================================
+   LARGE TABLET  (≤ 1200px)
+   Sidebar collapses to a thin icon-only rail (70px wide).
+   Text labels, header desc, and quick-action buttons are hidden.
+   Content grid collapses from 3 → 2 columns.
+   ============================================================ */
+@media (max-width: 1200px) {
+
+  /* ── Icon-only sidebar rail ── */
+  #sidebar {
+    width: 70px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+
+  /* Stack the inner container vertically and center everything */
+  #sidebar .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Logo block — keep it, hide the text beside it */
+  #sidebar .container .header {
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  #sidebar .container .header .desc {
+    display: none;
+  }
+
+  #sidebar .container .header .logo {
+    margin-left: 0;
+  }
+
+  /* Nav items — center icons, hide text labels */
+  #sidebar .container .main-menu .flex {
+    justify-content: center;
+    padding: 12px 0;
+    width: 46px;
+    margin: 0 auto 6px;
+    border-radius: 10px;
+  }
+
+  #sidebar .container .main-menu .flex span {
+    display: none;
+  }
+
+  /* Quick-actions section — hide title and text, show only icon buttons */
+  #sidebar .container .options h3 {
+    display: none;
+  }
+
+  #sidebar .container .options .btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  #sidebar .container .options .btns button {
+    width: 46px;
+    padding: 0;
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+
+  /* Hide the text label inside each quick-action button */
+  #sidebar .container .options .btns button > span {
+    display: none;
+  }
+
+  /* Keep the coloured icon div centred */
+  #sidebar .container .options .btns button div {
+    margin: 0;
+  }
+
+  /* ── Main content shifts left by the new slim sidebar width ── */
+  .main {
+    margin-right: 70px;
+    padding: 24px;
+  }
+
+  /* Cards row — keep 3 columns */
+  #cards .container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* Content grid — collapse to 2 columns */
+  #content .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "recent  recent"
+      "bill    bill"
+      "last    last"
+      "budget  budget"
+      "graph   graph"
+      "summary credit";
+  }
+
+  /* Bill boxes — keep 2 columns */
+  #content .bill .boxs .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Graph bar chart */
+  #content .graph .section {
+    padding-top: 80px;
+    gap: 18px;
+  }
+}
+
+
+/* ============================================================
+   TABLET  (≤ 900px)
+   Icon rail stays; content goes to 1 column.
+   ============================================================ */
+@media (max-width: 900px) {
+
+  /* Sidebar stays as icon rail — no changes needed beyond 1200px rules */
+
+  /* Main content takes remaining width */
+  .main {
+    margin-right: 70px;
+    padding: 20px;
+  }
+
+  /* Header */
+  #header .container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Cards — stack to 1 column */
+  #cards .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "current"
+      "income"
+      "spend";
+  }
+
+  /* Content — single column */
+  #content .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "recent"
+      "bill"
+      "last"
+      "budget"
+      "graph"
+      "summary"
+      "credit";
+  }
+
+  /* Bill boxes — 2×2 grid stays */
+  #content .bill .boxs .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Transactions table — allow horizontal scroll */
+  #content .last {
+    overflow-x: auto;
+  }
+
+  #content .last table {
+    min-width: 580px;
+  }
+
+  /* Graph */
+  #content .graph .section {
+    padding-top: 60px;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Payment cards — side-by-side */
+  #content .credit .flex-column {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  #content .credit .c {
+    flex: 1 1 240px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE  (≤ 600px)
+   Everything stacks; font sizes scale down; table scrolls
+   ============================================================ */
+@media (max-width: 600px) {
+
+  /* Typography */
+  h1 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .font36-40 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .font30-36 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  /* Sidebar — ultra-slim icon rail on mobile */
+  #sidebar {
+    width: 54px;
+    padding: 16px 0;
+  }
+
+  #sidebar .container .header .logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  #sidebar .container .main-menu .flex {
+    width: 36px;
+    padding: 10px 0;
+  }
+
+  #sidebar .container .options .btns button {
+    width: 36px;
+  }
+
+  #sidebar .container .options .btns button div {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Main */
+  .main {
+    margin-right: 54px;
+    padding: 14px;
+  }
+
+  /* Header — stack vertically */
+  #header {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  #header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #header .container .left {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Cards */
+  #cards {
+    margin-top: 20px;
+  }
+
+  #cards .container {
+    gap: 12px;
+  }
+
+  #cards .current,
+  #cards .income,
+  #cards .spend {
+    padding: 20px;
+  }
+
+  /* Content sections */
+  #content {
+    margin-top: 20px;
+  }
+
+  #content .container {
+    gap: 14px;
+  }
+
+  #content .recent,
+  #content .bill,
+  #content .last,
+  #content .budget,
+  #content .graph,
+  #content .summary,
+  #content .credit {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  /* Recent activities */
+  #content .recent .card1,
+  #content .recent .card2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  #content .recent .card1 .abs,
+  #content .recent .card2 .abs {
+    position: static;
+    align-self: flex-end;
+    margin-top: -30px;
+  }
+
+  /* Bill boxes — full width single column on very small screens */
+  #content .bill .boxs .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* Transactions table */
+  #content .last table {
+    min-width: 520px;
+    font-size: 12px;
+  }
+
+  #content .last table td {
+    padding: 16px 6px;
+  }
+
+  #content .last table thead th {
+    font-size: 12px;
+    padding: 0 6px;
+  }
+
+  /* Budget cards */
+  #content .budget .card .card-1 .upper .right span {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  #content .budget .card .card-2,
+  #content .budget .card .card-3,
+  #content .budget .card .card-4,
+  #content .budget .card .card-5 {
+    padding: 16px;
+  }
+
+  /* Graph — bars center nicely */
+  #content .graph .section {
+    padding-top: 40px;
+    gap: 10px;
+    justify-content: space-around;
+  }
+
+  #content .graph .greencolumn {
+    width: 12px;
+    height: 70px;
+  }
+
+  #content .graph .redcolumn {
+    width: 12px;
+    height: 22px;
+  }
+
+  /* Payment cards — stack vertically */
+  #content .credit .flex-column {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  #content .credit .c {
+    flex: unset;
+    width: 100%;
+    padding: 20px;
+  }
+
+  #content .credit .c .middle span {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* Summary */
+  #content .summary .b {
+    padding: 16px 0;
+  }
+
+  .summary .b .upper .block {
+    width: 36px;
+    height: 36px;
+  }
+
+
+}
+
+
+/* ============================================================
+   EXTRA SMALL  (≤ 380px)
+   Tighten spacing and font sizes even further
+   ============================================================ */
+@media (max-width: 380px) {
+
+  .main {
+    padding: 10px;
+  }
+
+  #header {
+    padding: 12px;
+  }
+
+  #cards .current,
+  #cards .income,
+  #cards .spend {
+    padding: 14px;
+  }
+
+  .font36-40 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  #content .bill .boxs .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "internet"
+      "elec"
+      "phone"
+      "netflex";
+  }
+
+  #content .credit .c .middle span {
+    font-size: 15px;
+  }
+
+  #content .last table {
+    min-width: 440px;
+    font-size: 11px;
+  }
+}
